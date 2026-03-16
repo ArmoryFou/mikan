@@ -123,13 +123,6 @@ cd frontend && npm run dev
 
 Deploy backend first → update frontend URL → build & deploy frontend → configure CORS.
 
-### ✅ Production checklist
-- [ ] Strong `JWT_SECRET`
-- [ ] `backend/.env` not in git
-- [ ] HTTPS enforced
-- [ ] MongoDB network rules + backups
-- [ ] Process manager (PM2/systemd)
-
 ---
 
 ## 📄 License
