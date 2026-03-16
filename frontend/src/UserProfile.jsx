@@ -586,7 +586,6 @@ function UserProfile() {
               <div className="min-w-0">
                 <h1 className="text-2xl font-bold leading-none text-white">{profileName}</h1>
                 <p className="mt-1.5 text-sm leading-none text-stone-400">@{profileUsername}</p>
-                {isOwnProfile ? <p className="mt-2 text-xs text-stone-500">{user.email}</p> : null}
 
                 <div className="mt-4 flex flex-wrap items-center gap-2">
                   {isOwnProfile ? (

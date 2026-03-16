@@ -113,7 +113,7 @@ All screenshots below are from the local promotion folder:
 ![Mikan Screenshot 3](promotion/Screenshot%202026-03-15%20220052.png)
 ![Mikan Screenshot 4](promotion/Screenshot%202026-03-15%20220117.png)
 ![Mikan Screenshot 5](promotion/Screenshot%202026-03-15%20220137.png)
-![Mikan Screenshot 6](promotion/Screenshot%202026-03-15%20220509.png)
+![Mikan Screenshot 6](promotion/Screenshot%202026-03-15%20222317.png)
 
 ## Run Locally (Development)
 
