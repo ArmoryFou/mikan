@@ -1,0 +1,257 @@
+@import "tailwindcss";
+
+:root {
+	--bg: #100f0e;
+	--bg-soft: #171513;
+	--panel: #1c1a17;
+	--panel-2: #222019;
+	--line: #302c28;
+	--text: #f0ece9;
+	--muted: #9c9490;
+	--brand: #f5f5f4;
+	--brand-2: #e7e5e4;
+	--danger: #f87171;
+	--space-1: 0.5rem;
+	--space-2: 0.75rem;
+	--space-3: 1rem;
+	--space-4: 1.5rem;
+	--space-5: 2rem;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: 'Manrope', 'Segoe UI', sans-serif;
+	color: var(--text);
+	background: #100f0e;
+	background-attachment: fixed;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* Unlayered rule — beats Tailwind @layer utilities at equal specificity.
+   Guarantees dark text on any element with a solid white background,
+   regardless of inherited color from page wrappers (text-white). */
+.bg-white {
+	color: #0c0a09;
+}
+
+.page-shell {
+	min-height: 100vh;
+	padding: 1.75rem 1.25rem;
+}
+
+.page-container {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 72rem;
+	padding-inline: 0.35rem;
+}
+
+.top-brand {
+	font-family: 'Sora', 'Manrope', sans-serif;
+	font-size: clamp(1.875rem, 2.8vw, 2.5rem);
+	font-weight: 700;
+	line-height: 1.1;
+	letter-spacing: -0.03em;
+	color: #ffffff;
+}
+
+.top-subtitle {
+	margin-top: 0.35rem;
+	font-size: 0.95rem;
+	color: #9c9490;
+}
+
+.section-title {
+	font-size: 1.35rem;
+	font-weight: 700;
+	line-height: 1.2;
+	color: #ffffff;
+}
+
+.section-copy {
+	margin-top: var(--space-1);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	color: #9c9490;
+}
+
+.panel {
+	border: 1px solid rgba(68, 64, 60, 0.45);
+	border-radius: 1rem;
+	background: rgba(12, 10, 9, 0.45);
+}
+
+.panel-soft {
+	border: 1px solid rgba(68, 64, 60, 0.4);
+	border-radius: 0.75rem;
+	background: rgba(12, 10, 9, 0.35);
+}
+
+.field-label {
+	display: block;
+	margin-bottom: 0.65rem;
+	font-size: 0.72rem;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #9c9490;
+}
+
+.field-input {
+	width: 100%;
+	border: 1px solid #44403c;
+	border-radius: 0.75rem;
+	background: rgba(12, 10, 9, 0.85);
+	padding: 0.85rem 1rem;
+	color: #e7e5e4;
+	font-size: 0.95rem;
+	line-height: 1.4;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field-input::placeholder {
+	color: #78716c;
+}
+
+.field-input:focus {
+	outline: none;
+	border-color: rgba(255, 255, 255, 0.6);
+	box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.07);
+}
+
+.field-input:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.75rem;
+	padding: 0.72rem 1rem;
+	font-size: 0.9rem;
+	font-weight: 700;
+	line-height: 1.2;
+	transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease, opacity 0.18s ease;
+}
+
+.btn-primary:active,
+.btn-secondary:active,
+.btn-danger:active {
+	transform: translateY(1px);
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-danger:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	transform: none;
+}
+
+.btn-primary {
+	background: #ffffff;
+	color: #0c0a09 !important;
+	border: 1px solid #ffffff;
+	letter-spacing: 0.025em;
+}
+
+.btn-primary:hover {
+	background: #f5f5f4;
+	border-color: #f5f5f4;
+	color: #0c0a09 !important;
+}
+
+.btn-secondary {
+	background: rgba(12, 10, 9, 0.7);
+	border: 1px solid #44403c;
+	color: #f0ece9;
+}
+
+.btn-secondary:hover {
+	background: #1c1917;
+	border-color: #78716c;
+}
+
+.btn-danger {
+	background: rgba(244, 63, 94, 0.16);
+	border: 1px solid rgba(251, 113, 133, 0.4);
+	color: #fecdd3;
+}
+
+.btn-danger:hover {
+	background: rgba(244, 63, 94, 0.25);
+}
+
+.chip {
+	display: inline-flex;
+	align-items: center;
+	border-radius: 9999px;
+	border: 1px solid transparent;
+	padding: 0.35rem 0.78rem;
+	font-size: 0.72rem;
+	font-weight: 700;
+}
+
+.chip-muted {
+	border-color: rgba(120, 113, 108, 0.6);
+	background: rgba(68, 64, 60, 0.45);
+	color: #d6d3d1;
+}
+
+.chip-completed {
+	border-color: rgba(52, 211, 153, 0.4);
+	background: rgba(16, 185, 129, 0.15);
+	color: #a7f3d0;
+}
+
+.chip-playing {
+	border-color: rgba(56, 189, 248, 0.4);
+	background: rgba(14, 165, 233, 0.15);
+	color: #bae6fd;
+}
+
+.chip-dropped {
+	border-color: rgba(251, 113, 133, 0.45);
+	background: rgba(244, 63, 94, 0.15);
+	color: #fecdd3;
+}
+
+.chip-hold {
+	border-color: rgba(251, 191, 36, 0.45);
+	background: rgba(245, 158, 11, 0.15);
+	color: #fde68a;
+}
+
+@media (min-width: 768px) {
+	.page-shell {
+		padding: 2.25rem 2rem;
+	}
+
+	.page-container {
+		padding-inline: 0.75rem;
+	}
+}
+
+/* Preserve better text contrast for native select options */
+option {
+	color: #e7e5e4;
+	background: #100f0e;
+}
