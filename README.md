@@ -1,263 +1,139 @@
-# Mikan (VN Social Logger)
+# 🍊 Mikan
 
-Mikan is a full-stack social tracking platform for visual novels. Think of it as a VN-focused mix of personal journaling, public profiles, activity feeds, and community lists, powered by VNDB data.
+A full-stack social tracker for visual novels. Log your reads, write reviews, follow friends, build curated lists, and discover new VNs — all powered by VNDB data.
 
-The project includes:
+---
 
-- A React + Vite frontend for discovery, tracking, profiles, lists, and social interactions.
-- An Express + MongoDB backend with JWT auth, VNDB integration, notifications, and cached metadata.
-- A promotion folder with real screenshots you can use for documentation and showcase.
+## ✨ Features
 
-## What The Site Offers (Feature Analysis)
+### 📚 Personal Tracking
+- 📝 Log any VN with status, rating, and review text
+- 🗂️ Statuses: `want-to-play` · `playing` · `completed` · `dropped` · `on-hold`
+- ⭐ Favorite VNs and characters saved to your profile
+- 🖼️ Custom preferred cover per VN
+- 📥 VNDB XML import to migrate your existing data
+- 🔍 Filter, sort, and search your full log
 
-This is not only a tracker. The product is built around three connected layers:
+### 🌐 Social
+- 👥 Follow users, see followers/following with privacy controls
+- 📰 Friends activity feed + global activity feed
+- 🔔 Notifications for follows, status changes, reviews, and recommendations
+- 💌 Send direct VN recommendations to friends
+- 🏠 Public profile pages with logs, stats, and lists
 
-1. Personal tracking workflow
-2. Social discovery workflow
-3. Curated community content workflow
+### 📋 Lists
+- ✏️ Create custom lists: `normal` or `ranking` type
+- 🔒 Visibility: `public` · `unlisted` · `private`
+- 🏷️ Add notes and rank scores per entry, drag to reorder
+- ❤️ Like, follow, and comment on other users' lists
+- 🌍 Browse public lists with search and sorting
 
-### 1) Personal Tracking Workflow
+### 🔎 VN Pages
+- 📖 Full VN details, releases, and multi-cover gallery
+- 💬 Quote feed from VNDB
+- 🧑‍🤝‍🧑 Character browsing with detailed character pages
+- 📊 Aggregate community stats (public + friends slice)
+- ✍️ Community reviews per VN
 
-- Account system with registration/login and persistent JWT sessions.
-- Per-VN log entry with status, rating, and review text.
-- Status model optimized for progression tracking:
-   - want-to-play
-   - playing
-   - completed
-   - dropped
-   - on-hold
-- Rich list management UI with filters, sort, search, and quick actions.
-- Favorite VN and favorite character management in profile settings.
-- Custom preferred covers per VN.
-- Avatar upload and profile customization (display name, bio, privacy settings).
-- VNDB XML import support from Settings to migrate existing VN tracking.
+### ⚙️ Profile & Settings
+- 🖼️ Avatar upload and custom display name/bio
+- 🔐 Privacy controls
+- 🧑 Members directory
 
-### 2) Social Discovery Workflow
+---
 
-- Follow/unfollow users and browse followers/following with privacy checks.
-- Personalized friends activity feed.
-- Global activity feed.
-- Notification center for:
-   - follow events
-   - status changes
-   - reviews
-   - VN recommendations
-- Direct VN recommendations to followed users.
-- Public profile pages with logs, social metrics, and list sections.
+## 📸 Screenshots
 
-### 3) Curated Community Content Workflow
+**Home feed**
+![Home](promotion/Home.png)
 
-- Public list explorer with search and sorting.
-- User-created custom lists with two types:
-   - normal
-   - ranking
-- List visibility modes:
-   - public
-   - private
-   - unlisted
-- List items can include notes and (for ranking lists) rank score.
-- Reorderable list items.
-- List social interactions:
-   - follow list
-   - like list
-   - comment threads with owner/author moderation rules
+**VN detail page**
+![VN Page](promotion/vnpage.png)
 
-### VN Intelligence Layer
+**User profile**
+![Profile](promotion/profile.png)
 
-Mikan enriches each VN page beyond basic tracking:
+**Custom lists**
+![Lists](promotion/lists.png)
 
-- VN detail data from VNDB.
-- Character browsing and character detail pages.
-- Community reviews per VN.
-- Release information and multi-cover gallery.
-- Quote feed from VNDB.
-- VN-level aggregate stats (public + followed users slice).
+**Character details**
+![Characters](promotion/characters.png)
 
-### Data + Performance Architecture
+**Members directory**
+![Members](promotion/members.png)
 
-- MongoDB-based persistence for users, logs, social graph, lists, comments, likes, follows, and reviews.
-- Local cache collections for VN and character payloads to reduce repeated VNDB calls.
-- Backend pagination patterns across feeds, members, notifications, followers/following, comments, and list browsing.
-- Static serving for uploaded avatars.
+---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-### Frontend
+| Layer | Tech |
+|---|---|
+| Frontend | React 19, Vite 8, Tailwind CSS 4, React Router 7 |
+| Backend | Node.js ESM, Express 5, MongoDB + Mongoose 9 |
+| Auth | JWT + bcryptjs |
+| Uploads | multer → `backend/uploads/avatars/` |
+| External API | [VNDB Kana API](https://api.vndb.org/kana/) |
 
-- React 19
-- React Router 7
-- Vite 8
-- Tailwind CSS 4
-- Lucide React icons
+---
 
-### Backend
+## 🚀 Running Locally
 
-- Node.js (ES modules)
-- Express 5
-- MongoDB + Mongoose
-- JWT (jsonwebtoken)
-- bcryptjs
-- multer (avatar uploads)
-- CORS + dotenv
-
-### External API
-
-- VNDB Kana API: https://api.vndb.org/kana/
-
-## Screenshots
-
-All screenshots below are from the local promotion folder:
-
-![Mikan Screenshot 1](promotion/Screenshot%202026-03-15%20215941.png)
-![Mikan Screenshot 2](promotion/Screenshot%202026-03-15%20220034.png)
-![Mikan Screenshot 3](promotion/Screenshot%202026-03-15%20220052.png)
-![Mikan Screenshot 4](promotion/Screenshot%202026-03-15%20220117.png)
-![Mikan Screenshot 5](promotion/Screenshot%202026-03-15%20220137.png)
-![Mikan Screenshot 6](promotion/Screenshot%202026-03-15%20222317.png)
-
-## Run Locally (Development)
-
-### Requirements
-
-- Node.js 20+ recommended
-- npm
-- MongoDB Atlas cluster (or any MongoDB URI)
-
-### 1) Install dependencies
+**Requirements:** Node.js 20+, npm, MongoDB URI
 
 ```bash
-cd backend
-npm install
+# 1. Install dependencies
+cd backend && npm install
+cd ../frontend && npm install
 
-cd ../frontend
-npm install
+# 2. Configure backend — copy and fill in:
+cp backend/.env_template backend/.env
+#   MONGODB_URI=mongodb+srv://...
+#   JWT_SECRET=your-secret
+
+# 3. Start backend (port 3000)
+cd backend && npm start
+
+# 4. Start frontend (port 5173)
+cd frontend && npm run dev
 ```
 
-### 2) Configure backend environment
+---
 
-Create backend/.env:
+## 🌍 Self-Hosting
 
-```env
-MONGODB_URI=mongodb+srv://YOUR_USER:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/vnlogger
-JWT_SECRET=replace-with-a-long-random-secret
-```
+> The frontend currently uses hardcoded `http://localhost:3000` URLs. For production, replace those with your real API domain before building.
 
-You can copy from backend/.env_template.
+### Option A — Single VPS
 
-### 3) Start backend
+1. Install Node.js, Nginx, PM2
+2. Set `backend/.env` with production values
+3. Update frontend API URLs → your public API domain
+4. `cd frontend && npm run build`
+5. `cd backend && pm2 start server.js --name mikan-api`
+6. Serve `frontend/dist` with Nginx, reverse-proxy `/uploads` → backend
+7. Add HTTPS (Let's Encrypt)
 
-```bash
-cd backend
-npm run start
-```
+### Option B — Split Hosting
 
-Backend runs on http://localhost:3000.
+| Service | Options |
+|---|---|
+| Frontend | Vercel, Netlify, Cloudflare Pages |
+| Backend | Render, Railway, Fly.io, VPS |
+| Database | MongoDB Atlas |
 
-### 4) Start frontend
+Deploy backend first → update frontend URL → build & deploy frontend → configure CORS.
 
-```bash
-cd frontend
-npm run dev
-```
+### ✅ Production checklist
+- [ ] Strong `JWT_SECRET`
+- [ ] `backend/.env` not in git
+- [ ] HTTPS enforced
+- [ ] MongoDB network rules + backups
+- [ ] Process manager (PM2/systemd)
 
-Frontend runs on http://localhost:5173.
+---
 
-## Self-Hosting Guide
+## 📄 License
 
-This section explains how to host your own production instance.
+Code: **GNU AGPL v3.0 or later**
 
-Important: the current frontend code uses hardcoded API URLs pointing to http://localhost:3000. For internet deployment, you must switch those URLs to your real backend domain (example: https://api.yourdomain.com).
-
-### Option A: Single VPS (recommended simple setup)
-
-Host both services on one Linux server and place Nginx in front.
-
-1. Install Node.js LTS, npm, Nginx, and PM2.
-2. Clone repository to server.
-3. Configure backend/.env with production MongoDB and strong JWT secret.
-4. Update frontend API URLs from localhost to your public API host.
-5. Build frontend:
-
-```bash
-cd frontend
-npm ci
-npm run build
-```
-
-6. Start backend with PM2:
-
-```bash
-cd backend
-npm ci
-pm2 start server.js --name mikan-api
-pm2 save
-```
-
-7. Serve frontend dist with Nginx and reverse proxy /api + /uploads to backend:3000.
-8. Add TLS certificates (Let's Encrypt).
-
-### Option B: Split hosting (frontend static + backend service)
-
-- Frontend: Vercel, Netlify, Cloudflare Pages, or static Nginx.
-- Backend: Render, Railway, Fly.io, VPS, or any Node host.
-- Database: MongoDB Atlas.
-
-Steps:
-
-1. Deploy backend first and verify API URL.
-2. Replace frontend API base URLs with deployed backend URL.
-3. Build and deploy frontend.
-4. Ensure CORS in backend allows frontend origin.
-
-### Production checklist
-
-- Use a strong JWT secret.
-- Keep backend/.env out of git.
-- Enforce HTTPS.
-- Restrict file upload limits and monitor storage.
-- Configure MongoDB network rules and backups.
-- Use process manager (PM2/systemd) and centralized logs.
-
-## Scripts
-
-### Backend
-
-- npm run start: run API server
-- npm run dev: run API server with watch mode
-
-### Frontend
-
-- npm run dev: start Vite dev server
-- npm run build: production build
-- npm run preview: preview production build
-
-## Project Structure
-
-```text
-backend/
-   models/
-   uploads/avatars/
-   server.js
-frontend/
-   src/
-   index.html
-promotion/
-README.md
-```
-
-## Notes
-
-- VN data and search are powered by VNDB Kana API.
-- VN and character payloads are cached server-side to reduce API pressure.
-- Avatars are stored locally under backend/uploads/avatars.
-
-## License
-
-Code in this repository is licensed under GNU AGPL v3.0 or later.
-
-Data and third-party content note:
-
-- This app consumes data from VNDB.
-- VNDB API usage terms state free non-commercial use.
-- VNDB data is published under ODbL/DbCL with listed exceptions (including third-party content such as images/descriptions and AniDB-derived fields).
-- If you deploy this project, you are responsible for complying with VNDB terms and any third-party content licensing requirements.
+Data note: This project uses [VNDB](https://vndb.org) data (ODbL/DbCL, non-commercial use). You are responsible for complying with [VNDB's terms](https://vndb.org/d17) and any third-party content licensing on your deployment.
